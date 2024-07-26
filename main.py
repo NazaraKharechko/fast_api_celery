@@ -16,7 +16,7 @@ class PropertyScraper:
 
     def scrape(self):
         results = []
-        for _ in range(60):  # Проводимо цикл 60 разів
+        for _ in range(10):  # Проводимо цикл 60 разів
             self.driver.get(self.url)
             time.sleep(2)  # Затримка, щоб дочекатися завантаження сторінки
 
@@ -87,6 +87,7 @@ class PropertyScraper:
 
             # Додати результат до списку результатів
             results.append(result)
+            print(result)
 
         self.driver.quit()
         return results
