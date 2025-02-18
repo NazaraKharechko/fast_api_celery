@@ -30,7 +30,6 @@ async def get_all_products():
     products = load_products()
     return products
 
-
 # Отримання продукту за його ім'ям
 @app.get("/products/{product_name}", response_model=Product)
 async def get_product_by_name(product_name: str):
@@ -44,7 +43,6 @@ async def get_product_by_name(product_name: str):
 
     # Якщо продукт не знайдений, кидаємо помилку 404
     raise HTTPException(status_code=404, detail="Product not found")
-
 
 # Отримання інформації про конкретне поле продукту
 @app.get("/products/{product_name}/{product_field}")

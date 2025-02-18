@@ -6,7 +6,6 @@ import json
 url = 'https://www.mcdonalds.com/ua/uk-ua/eat/fullmenu.html'
 res = []
 
-
 class SpanScraper:
     def __init__(self, url):
         self.url = url
@@ -45,6 +44,7 @@ class SpanScraper:
         print(len(res))
         print(res)
         driver.quit()
+
         # Запис в файл всіх посилань на менб мака
         # with open('links.json', 'w') as f:
         #     json.dump(res, f)

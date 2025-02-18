@@ -79,8 +79,6 @@ def scrape():
     # Записуємо всі зібрані дані в JSON файл
     with open('scraped_data.json', 'w') as f:
         json.dump(all_data, f, indent=4)
-
     # Закриваємо драйвер
     driver.quit()
-
 scrape()
