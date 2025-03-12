@@ -37,7 +37,7 @@ def index(request):
 
 
 def all_index(request):
-    cities = ['Lviv', 'Kyiv', 'Odessa', 'Kharkiv', 'Dnipro']
+    cities = ['Lviv', 'Kyiv', 'Odessa', 'London', 'Dnipro']
     user_city = request.POST.get('city')
 
     if user_city and user_city not in cities:
