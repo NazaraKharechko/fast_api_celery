@@ -6,7 +6,7 @@ import datetime
 
 def get_weather(city):
     #оримуємо дані погоди
-    API_KEY = 'f2b4ac37694e1c98b186f2200b970320'
+    API_KEY = '' # ваш апі з openweathermap
     URL = 'https://api.openweathermap.org/data/2.5/weather'
     PARAMS = {'q': city, 'appid': API_KEY, 'units': 'metric', 'lang': 'en'}
 
