@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import pages  # <-- важливо
+from routers import pages  
 
 from storage import tasks
 
@@ -34,4 +34,4 @@ def delete_task(task_id: int):
 
 
 # --- Frontend ---
-app.include_router(pages.router)   # <-- обов'язково
+app.include_router(pages.router)  
