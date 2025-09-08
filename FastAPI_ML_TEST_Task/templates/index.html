@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    li { margin: 6px 0; }
+    .done { text-decoration: line-through; color: gray; }
+  </style>
+</head>
+<body>
+  <h1>✅ To-Do List</h1>
+
+  <form onsubmit="addTask(event)">
+    <input id="newTask" type="text" placeholder="Нова задача..." required>
+    <button type="submit">Додати</button>
+  </form>
+
+  <ul id="tasks">
+    {% for task in tasks %}
+      <li>
+        <input type="checkbox" {% if task.done %}checked{% endif %} onchange="toggleTask({{ task.id }}, this.checked)">
+        <span class="{% if task.done %}done{% endif %}">{{ task.title }}</span>
+        <button onclick="deleteTask({{ task.id }})">❌</button>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <script>
+    async function addTask(event) {
+      event.preventDefault();
+      const title = document.getElementById("newTask").value;
+      await fetch("/tasks", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({title})
+      });
+      location.reload(); // перезавантажує сторінку щоб підтягти задачі
+    }
+
+    async function toggleTask(id, done) {
+      await fetch(`/tasks/${id}`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({done})
+      });
+      location.reload();
+    }
+
+    async function deleteTask(id) {
+      await fetch(`/tasks/${id}`, {method: "DELETE"});
+      location.reload();
+    }
+  </script>
+</body>
+</html>
